@@ -1,0 +1,20 @@
+const http = require('http');
+
+const PORT = 3000; 
+
+const server= http.createServer((req, res) => {
+    if(req.url === '/friends') {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json')
+        
+        res.end(JSON.stringify({
+            id:1,
+            name: 'Sir Isaak Newton',
+        }))
+    } else if (req.url === '/messages') {
+        res.write (`<html>Hello how are you</html>`)
+    }
+    
+});
+
+server.listen(PORT, () => {console.log(`Listening on port ${PORT}...`)}); 
